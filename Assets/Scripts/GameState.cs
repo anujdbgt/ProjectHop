@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-    public static bool GamePaused;
+#if TESTING_MODE
+    public static bool GamePaused = false;
+#else
+    public static bool GamePaused = true;
+#endif
 
     public void PauseResumeProcess()
     {
@@ -26,5 +30,6 @@ public class GameState : MonoBehaviour
     void ResumeGame()
     {
         Time.timeScale = 1f;
+        GamePaused = false;
     }
 }

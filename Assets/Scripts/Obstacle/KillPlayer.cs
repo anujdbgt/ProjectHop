@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KillPlayer : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class KillPlayer : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            RestartScene.SceneRestart.ReloadScene();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

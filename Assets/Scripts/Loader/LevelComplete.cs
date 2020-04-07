@@ -12,4 +12,8 @@ public class LevelComplete : MonoBehaviour
         }
         LevelLoaderScript.LoadLevel.LoadNextLevel();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        LevelCompleted();
+    }
 }

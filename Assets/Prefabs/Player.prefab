@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676951ea149204549af3d8e20d97e41f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 0}
   slideDistance: {x: 3, y: 0}
   raycastOriginOffset: 0.33
   raycastXDistance: 0.1
@@ -194,7 +195,18 @@ MonoBehaviour:
     m_ActionId: 152b002e-9285-404f-9f93-bc4ebcfda79d
     m_ActionName: Player/JumpAndSlide[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3088416029274221977}
+        m_MethodName: JumpLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e2a5939e-aa01-4af3-af0b-77b8f81b7912
     m_ActionName: Player/JumpAndSlideLeft[/Keyboard/leftArrow]
   m_NeverAutoSwitchControlSchemes: 0

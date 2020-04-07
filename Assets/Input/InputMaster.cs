@@ -39,7 +39,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2e7057a4-b0ce-4c2f-bf2b-616033bbbf65"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": ""KeyBoardAndMouse"",
@@ -61,7 +61,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f46ffbfe-6068-453c-a378-7f424d403560"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyBoardAndMouse"",
