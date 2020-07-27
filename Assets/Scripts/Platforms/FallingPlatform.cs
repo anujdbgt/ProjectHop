@@ -6,8 +6,12 @@ public class FallingPlatform : MonoBehaviour
 {
     public float timeToFall = 3f;
     public float platformFallingVelocity;
+    public int destroyAfter = 20;
     float fallTime;
     Rigidbody2D platform;
+
+    Transform parentTransform;
+    GameObject player;
 
     private void Awake()
     {
@@ -16,10 +20,12 @@ public class FallingPlatform : MonoBehaviour
     private void Start()
     {
         platform = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        Debug.Log(player.transform.position.y+ "  " + this.transform.position.y);
+        if(collision.gameObject.tag == "Player" && PlayerAbovePlatform())
         {
             StartCoroutine(FallAfterSeconds());
         }
@@ -28,13 +34,18 @@ public class FallingPlatform : MonoBehaviour
     IEnumerator FallAfterSeconds()
     {
         yield return new WaitForSeconds(timeToFall);
-    //    if(fallTime > 0)
-    //    {
-    //        fallTime -= Time.deltaTime;
-    //    }
-    //    else if (fallTime <= 0)
-    //    {
-            platform.velocity = Vector2.down * platformFallingVelocity;
-    //   }
+        platform.velocity = Vector2.down * platformFallingVelocity;
+        yield return new WaitForSeconds(destroyAfter);
+        Destroy(this.gameObject);
     }
+
+    bool PlayerAbovePlatform()
+    {
+        if (player.transform.position.y > this.transform.position.y)
+        {
+            return true;
+        }
+        else return false;
+    }
+    
 }

@@ -142,7 +142,6 @@ public class Player : MonoBehaviour
                     Debug.Log("Coming in JumpClose to Wall");
                     JumpCloseWall(xMaxDistance, yMaxDistance, rightMovement);
                 }
-                Debug.LogError("TouchingBottom" + touchingBottom + "Check Front Collision" + !CheckFrontCollision(rightMovement));
                 //Normal Jump and Slide
                 if (context.started  && touchingBottom && !CheckFrontCollision(rightMovement))
                 {

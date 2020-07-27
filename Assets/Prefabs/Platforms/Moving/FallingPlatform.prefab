@@ -59,9 +59,10 @@ GameObject:
   - component: {fileID: 5645203176266259426}
   - component: {fileID: 5645203176266259425}
   - component: {fileID: 5645203176266259230}
+  - component: {fileID: 1650216224281108417}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,8 +93,8 @@ Tilemap:
   - first: {x: -2, y: 0, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -128,8 +129,8 @@ Tilemap:
   - first: {x: 2, y: 0, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -137,20 +138,20 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 3
-    m_Data: {fileID: 11400000, guid: 280311e96b574494780bbfa04cb308e0, type: 2}
+    m_Data: {fileID: 11400000, guid: 2cad1a48469649e42b24c5a6e0f03f67, type: 2}
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: df0149253f1c8134ea2e5e26597cbb9f, type: 2}
+    m_Data: {fileID: 11400000, guid: 969d7ed972e597d4788e12ea182c0ae1, type: 2}
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: b1b756a88ecb99947a65ef065935b214, type: 2}
+    m_Data: {fileID: 11400000, guid: e979ddd64cad9d344bc9edc559988603, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 3
-    m_Data: {fileID: 7052995454107013588, guid: 4622f86aa81018e4a8f856ff112c9f25,
+    m_Data: {fileID: 1721798448538171029, guid: 4622f86aa81018e4a8f856ff112c9f25,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -3508794999336203909, guid: 4622f86aa81018e4a8f856ff112c9f25,
+    m_Data: {fileID: 8788545991891706334, guid: 4622f86aa81018e4a8f856ff112c9f25,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -6520634922097649790, guid: 4622f86aa81018e4a8f856ff112c9f25,
+    m_Data: {fileID: 5003174463449487696, guid: 4622f86aa81018e4a8f856ff112c9f25,
       type: 3}
   m_TileMatrixArray:
   - m_RefCount: 5
@@ -277,7 +278,7 @@ CompositeCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_GeometryType: 0
@@ -289,13 +290,21 @@ CompositeCollider2D:
     - - X: -20000100
         Y: 10000041
       - X: -20000100
-        Y: -41
-      - X: -20000041
+        Y: 1874974
+      - X: -20000074
+        Y: 1874928
+      - X: -16875040
+        Y: -93
+      - X: -16875014
         Y: -100
-      - X: 30000041
+      - X: 26875014
         Y: -100
+      - X: 26875040
+        Y: -93
+      - X: 30000074
+        Y: 1874928
       - X: 30000100
-        Y: -41
+        Y: 1874974
       - X: 30000100
         Y: 10000041
       - X: 30000041
@@ -304,10 +313,12 @@ CompositeCollider2D:
         Y: 10000100
   m_CompositePaths:
     m_Paths:
-    - - {x: 2.9999747, y: -0.00001}
+    - - {x: 2.6874945, y: -0.00001}
+      - {x: 3.00001, y: 0.1875125}
       - {x: 2.9999747, y: 1.00001}
       - {x: -2.00001, y: 0.9999748}
-      - {x: -1.9999748, y: -0.00001}
+      - {x: -1.9999944, y: 0.1874849}
+      - {x: -1.6874944, y: -0.00001}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!19719996 &5645203176266259425
@@ -340,3 +351,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToFall: 3
   platformFallingVelocity: 1
+  destroyAfter: 20
+--- !u!251 &1650216224281108417
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5645203176266259431}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 170
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 0
