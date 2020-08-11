@@ -401,19 +401,18 @@ public class Player : MonoBehaviour
         {
             touchingBottom = false;
         }
-        if(col.gameObject.tag == "MovingPlatform")
+        if(col.gameObject.HasTag("MovingPlatform"))
         {
-            player.velocity = Vector2.zero;
+            transform.parent.gameObject.transform.SetParent(null);
         }
     }
 
     private void OnCollisionStay2D(Collision2D col)
     {
-        if(col.gameObject.tag == "MovingPlatform")
+        if(col.gameObject.HasTag ("MovingPlatform"))
         {
-            Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D>();
-            Debug.Log(rb.velocity);
-            player.velocity = rb.velocity;
+            transform.parent.gameObject.transform.SetParent(col.transform);
+            //transform.position = new Vector2(col.transform.position.x, transform.position.y);
         }
     }
     bool CheckFrontCollision(int raycastDirection)
