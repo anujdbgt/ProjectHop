@@ -1,44 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class FallingPlatform : MonoBehaviour
 {
-    public float timeToFall = 3f;
-    public float platformFallingVelocity;
-    public int destroyAfter = 20;
-    float fallTime;
-    Rigidbody2D platform;
+    public float timeToDisappear = 2f;
+    public int numberOfBlinks = 4;
+    public float timeToReppear = 0.20f;
+    public int reapearAfterSecs = 20;
 
+    Tilemap tilemap;
+    Rigidbody2D platform;
     Transform parentTransform;
     GameObject player;
+    GameObject tileParent;
+    Color tilemapColor;
 
     private void Awake()
     {
-        fallTime = timeToFall;
     }
     private void Start()
     {
+        tilemap = GetComponent<Tilemap>();
         platform = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        tileParent = this.transform.parent.gameObject;
+        tilemapColor = tilemap.color;
+    }
+    private void Update()
+    {
+        if (!tileParent.activeSelf)
+        {
+            Debug.Log("Reactivationg the tile");
+            StartCoroutine(TileReappear());
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(player.transform.position.y+ "  " + this.transform.position.y);
         if(collision.gameObject.tag == "Player" && PlayerAbovePlatform())
         {
-            StartCoroutine(FallAfterSeconds());
+            StartCoroutine(StartBlinking());
         }
     }
 
-    IEnumerator FallAfterSeconds()
+    IEnumerator StartBlinking()
     {
-        yield return new WaitForSeconds(timeToFall);
-        platform.velocity = Vector2.down * platformFallingVelocity;
-        yield return new WaitForSeconds(destroyAfter);
-        Destroy(this.gameObject);
+        for (int i = 0; i < numberOfBlinks; i++)
+        {
+            yield return new WaitForSeconds(timeToDisappear);
+            tilemapColor.a = 0;
+            tilemap.color = tilemapColor;
+            yield return new WaitForSeconds(timeToReppear);
+            tilemapColor.a = 1;
+            tilemap.color = tilemapColor;
+        }
+        tileParent.SetActive(false);
     }
 
+    IEnumerator TileReappear()
+    {
+        yield return new WaitForSeconds(reapearAfterSecs);
+        tileParent.SetActive(true);
+    }
     bool PlayerAbovePlatform()
     {
         if (player.transform.position.y > this.transform.position.y)

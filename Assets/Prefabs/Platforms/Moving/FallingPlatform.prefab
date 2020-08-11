@@ -349,9 +349,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373d5f82432e3944e8576da2db6d5f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToFall: 3
-  platformFallingVelocity: 1
-  destroyAfter: 20
+  timeToDisappear: 1
+  numberOfBlinks: 3
+  timeToReppear: 0.2
+  reapearAfterSecs: 10
 --- !u!251 &1650216224281108417
 PlatformEffector2D:
   m_ObjectHideFlags: 0

@@ -401,6 +401,20 @@ public class Player : MonoBehaviour
         {
             touchingBottom = false;
         }
+        if(col.gameObject.tag == "MovingPlatform")
+        {
+            player.velocity = Vector2.zero;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D col)
+    {
+        if(col.gameObject.tag == "MovingPlatform")
+        {
+            Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D>();
+            Debug.Log(rb.velocity);
+            player.velocity = rb.velocity;
+        }
     }
     bool CheckFrontCollision(int raycastDirection)
     {
