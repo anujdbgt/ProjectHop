@@ -24,7 +24,6 @@ public class FallingPlatformPool : MonoBehaviour
     IEnumerator ActivatingChildren()
     {
         yield return new WaitForSeconds(timeBeforeEveryCheck);
-        Debug.Log("Checking");
         for (int i = 0; i < fallingPlatforms.Count; i++)
         {
             if (!fallingPlatforms[i].gameObject.activeSelf)
