@@ -38,7 +38,6 @@ public class FallingPlatform : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(player.transform.position.y+ "  " + this.transform.position.y);
         if(collision.gameObject.tag == "Player" && PlayerAbovePlatform())
         {
             StartCoroutine(StartBlinking());
