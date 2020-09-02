@@ -40,17 +40,6 @@ public class VerticalMovingEnemy : MonoBehaviour
     }
     private void Update()
     {
-        //Moving Up Change to Down
-        //if (rightWallCheck().collider != null)
-        //{
-        //    if (rightWallCheck().collider.tag == "SideWall")
-        //    {
-        //        enemy.velocity = Vector2.down * speed;
-        //        slime.flipX = false;
-        //    }
-        //}
-        Debug.Log("Checking For Collision : " + upFloorTest());
-        Debug.Log("Checking For Collision : " + downFloorTest());
         if (!upFloorTest() && downFloorTest())
         {
             Debug.Log("Should Move Down Now");
@@ -65,14 +54,6 @@ public class VerticalMovingEnemy : MonoBehaviour
             enemy.velocity = Vector2.up * speed;
             slime.flipX = false;
         }
-        //if (leftWallCheck().collider != null)
-        //{
-        //    if (leftWallCheck().collider.tag == "SideWall")
-        //    {
-        //        enemy.velocity = Vector2.up * speed;
-        //        slime.flipX = true;
-        //    }
-        //}
     }
 
     bool upFloorTest()
@@ -88,17 +69,6 @@ public class VerticalMovingEnemy : MonoBehaviour
         return hit;
     }
 
-    //RaycastHit2D rightWallCheck()
-    //{
-    //    RaycastHit2D hit = Physics2D.Raycast(new Vector2(upSensor.position.x + raycastOriginOffset, transform.position.y), Vector2.up, raycastDistance);
-    //    Debug.DrawRay(new Vector2(upSensor.position.x, transform.position.y), Vector2.down, Color.red); ;
-    //    return hit;
-    //}
-    //RaycastHit2D leftWallCheck()
-    //{
-    //    RaycastHit2D hit = Physics2D.Raycast(new Vector2(downSensor.position.x + raycastOriginOffset, transform.position.y), Vector2.down, raycastDistance);
-    //    Debug.DrawRay(new Vector2(downSensor.position.x, transform.position.y), Vector2.down, Color.red); ;
-    //    return hit;
-    //}
+    
 
 }
