@@ -21,8 +21,7 @@ public class ShootingAI : MonoBehaviour
         rb = bullet.GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
         bulletSprite = bullet.GetComponent<SpriteRenderer>();
-        Debug.Log(bullet.transform.localPosition.x);
-        //BulletPositioning();
+        BulletPositioning();
         InvokeRepeating("Shooting", timeToShoot, timeToShoot);
     }
 
@@ -78,13 +77,11 @@ public class ShootingAI : MonoBehaviour
     {
         if(this.GetComponent<SpriteRenderer>().flipX == false)
         {
-            bulletPosition = bullet.transform.localPosition;
+            bullet.transform.localPosition = bulletPosition;
         }
         else
         {
-            Debug.Log(bullet.transform.localPosition.x);
             bulletPosition = bullet.transform.localPosition;
-            Debug.Log(bulletPosition.x);
             bulletPosition.x =+ 1;
             bullet.transform.localPosition = bulletPosition;
             bulletPosition = bullet.transform.localPosition;

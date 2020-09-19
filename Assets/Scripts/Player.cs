@@ -234,7 +234,6 @@ public class Player : MonoBehaviour
                 //Normal Jump and Slide
                 if (context.started  && touchingBottom && !CheckFrontCollision(leftMovement))
                 {
-                    Debug.Log("JumpAnd Slide Process");
                     JumpSildeProcess(xMaxDistance, yMaxDistance, leftMovement);
                 }
                 //Hold to jump higher and longer
