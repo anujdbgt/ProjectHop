@@ -5,6 +5,7 @@ using UnityEngine;
 public class VerticalMovingEnemy : MonoBehaviour
 {
     public Transform upSensor, downSensor;
+    public Transform upWallCheck, downWallCheck;
     public float raycastDistance = 0.03f;
     public int speed = 2;
     public float raycastOriginOffset = 0.33f;
@@ -40,17 +41,15 @@ public class VerticalMovingEnemy : MonoBehaviour
     }
     private void Update()
     {
-        if (!upFloorTest() && downFloorTest())
+        if ((!upFloorTest() && downFloorTest()) || UpWallCheck())
         {
-            Debug.Log("Should Move Down Now");
             enemy.velocity = Vector2.down * speed;
             slime.flipX = true;
         }
         // Moving Down Change to Up
 
-        else if (upFloorTest() && !downFloorTest())
+        else if ((upFloorTest() && !downFloorTest()) || DownWallCheck())
         {
-            Debug.Log("Should Move Up Now");
             enemy.velocity = Vector2.up * speed;
             slime.flipX = false;
         }
@@ -58,17 +57,49 @@ public class VerticalMovingEnemy : MonoBehaviour
 
     bool upFloorTest()
     {
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x , upSensor.position.y + raycastOriginOffset), Vector2.left, raycastDistance);
-        Debug.DrawRay(new Vector2(transform.position.x, upSensor.position.y), Vector2.left, Color.red); ;
-        return hit;
+        if (slime.flipY)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, upSensor.position.y + raycastOriginOffset), Vector2.right, raycastDistance);
+            Debug.DrawRay(new Vector2(transform.position.x, upSensor.position.y), Vector2.right, Color.red);
+            return hit;
+        }
+        else
+        {
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, upSensor.position.y + raycastOriginOffset), Vector2.left, raycastDistance);
+            Debug.DrawRay(new Vector2(transform.position.x, upSensor.position.y), Vector2.left, Color.red);
+            return hit;
+        }
+        
     }
     bool downFloorTest()
     {
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, downSensor.position.y + raycastOriginOffset), Vector2.left, raycastDistance);
-        Debug.DrawRay(new Vector2(transform.position.x, downSensor.position.y), Vector2.left, Color.red); ;
-        return hit;
+        if (slime.flipY)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, downSensor.position.y + raycastOriginOffset), Vector2.right, raycastDistance);
+            Debug.DrawRay(new Vector2(transform.position.x, downSensor.position.y), Vector2.right, Color.red);
+            return hit;
+        }
+        else
+        {
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, downSensor.position.y + raycastOriginOffset), Vector2.left, raycastDistance);
+            Debug.DrawRay(new Vector2(transform.position.x, downSensor.position.y), Vector2.left, Color.red);
+            return hit;
+        }
+        
     }
 
+    bool UpWallCheck()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, upSensor.position.y + raycastOriginOffset), Vector2.up, raycastDistance);
+        Debug.DrawRay(new Vector2(transform.position.x, upSensor.position.y), Vector2.up, Color.red);
+        return hit;
+    }
     
+    bool DownWallCheck()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, downSensor.position.y + raycastOriginOffset), Vector2.down, raycastDistance);
+        Debug.DrawRay(new Vector2(transform.position.x, downSensor.position.y), Vector2.down, Color.red);
+        return hit;
+    }
 
 }
