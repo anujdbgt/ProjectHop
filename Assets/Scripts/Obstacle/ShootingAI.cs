@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootingAI : MonoBehaviour
 {
-
+    public float dsyncBullets;
     public GameObject bullet;
     public float speed;
     public int timeToShoot;
@@ -15,19 +15,17 @@ public class ShootingAI : MonoBehaviour
     Vector3 bulletPosition;
     Rigidbody2D rb;
     SpriteRenderer bulletSprite;
+    bool canShoot = true;
 
     void Start()
     {
+
+        bulletPosition = bullet.transform.localPosition;
         rb = bullet.GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
         bulletSprite = bullet.GetComponent<SpriteRenderer>();
         BulletPositioning();
         InvokeRepeating("Shooting", timeToShoot, timeToShoot);
-    }
-
-
-    void Update()
-    {
     }
     
     void Addvelocity()
@@ -54,19 +52,25 @@ public class ShootingAI : MonoBehaviour
     }
     void Shooting()
     {
-        DeactivateBullet();
-        BulletPositioning();
-        StartCoroutine(AnimationShootingWithDelay());
-        StartCoroutine(DeactivateWithDelay());
+        if (canShoot)
+        {
+            canShoot = false;
+            DeactivateBullet();
+            BulletPositioning();
+            StartCoroutine(AnimationShootingWithDelay());
+            StartCoroutine(DeactivateWithDelay());
+        }
+       
     }
-
     IEnumerator DeactivateWithDelay()
     {
         yield return new WaitForSeconds(timeToDeactive);
         DeactivateBullet();
+        canShoot = true;
     }
     IEnumerator AnimationShootingWithDelay()
     {
+        yield return new WaitForSeconds(dsyncBullets);
         ani.SetTrigger("Shooting");
         yield return new WaitForSeconds(animSync);
         ActivateBullet();
@@ -75,11 +79,11 @@ public class ShootingAI : MonoBehaviour
 
     void BulletPositioning()
     {
-        if(this.GetComponent<SpriteRenderer>().flipX == false)
+        if (this.GetComponent<SpriteRenderer>().flipX == false)
         {
             bullet.transform.localPosition = bulletPosition;
         }
-        else
+        if (this.GetComponent<SpriteRenderer>().flipX != false)
         {
             bulletPosition = bullet.transform.localPosition;
             bulletPosition.x =+ 1;
