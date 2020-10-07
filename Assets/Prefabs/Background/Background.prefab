@@ -426,6 +426,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallaxEffectX: 0.3
   parallaxEffectY: 0.5
+  transitionSpeed: 0
 --- !u!1 &8996825185054370143
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +529,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallaxEffectX: 0.8
   parallaxEffectY: 0.5
+  transitionSpeed: 0
 --- !u!1 &8996825185442423505
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,6 +629,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallaxEffectX: 0.3
   parallaxEffectY: 0.5
+  transitionSpeed: 0
 --- !u!1 &8996825185466131890
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +894,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallaxEffectX: 0.7
   parallaxEffectY: 0.5
+  transitionSpeed: 0
 --- !u!1 &8996825185614858567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,6 +1159,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallaxEffectX: 0.8
   parallaxEffectY: 0.5
+  transitionSpeed: 0
 --- !u!1 &8996825185723296281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,6 +1262,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallaxEffectX: 1
   parallaxEffectY: 0.5
+  transitionSpeed: 0
 --- !u!1 &8996825185729404649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,6 +1365,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallaxEffectX: 1
   parallaxEffectY: 0.5
+  transitionSpeed: 0
 --- !u!1 &8996825185747503961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,6 +2035,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallaxEffectX: 0.5
   parallaxEffectY: 0.5
+  transitionSpeed: 0
 --- !u!1 &8996825186407058068
 GameObject:
   m_ObjectHideFlags: 0

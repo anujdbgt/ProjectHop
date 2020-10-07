@@ -6,6 +6,7 @@ public class LevelComplete : MonoBehaviour
 {
     public void LevelCompleted()
     {
+        InterstitialAds.ads.ShowAds();
         if(PlayerPrefs.GetInt("CurrentLevel") < SceneManager.GetActiveScene().buildIndex + 1)
         {
             PlayerPrefs.SetInt("CurrentLevel", SceneManager.GetActiveScene().buildIndex + 1);
