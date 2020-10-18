@@ -22,49 +22,56 @@ public class CameraPanning : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         cam1 = cinCam1.GetComponent<CinemachineVirtualCamera>();
-        cam2 = cinCam2.GetComponent<CinemachineVirtualCamera>();
+        if(cinCam2 != null)
+        {
+            cam2 = cinCam2.GetComponent<CinemachineVirtualCamera>();
+        }
         currentSize = cam1.m_Lens.OrthographicSize;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (camPanTrigger)
+        if(cinCam2 != null)
         {
-            if (cameraState)
+            if (camPanTrigger)
             {
-                if (cam1.m_Lens.OrthographicSize < maxOrthoSize)
+                if (cameraState)
                 {
-                    playerInput.enabled = false;
-                    cam1.m_Lens.OrthographicSize += sizeToIncrease * Time.deltaTime;
-                }
-                else
-                {
-                    cam2.Priority = cam1.Priority + 1;
-                    playerInput.enabled = true;
-                    cameraState = false;
-                    camPanTrigger = false;
-                }
-
-            }
-            else
-            {
-                if(cam1.m_Lens.OrthographicSize > currentSize)
-                {
-                    playerInput.enabled = false;
-                    cam2.Priority = cam1.Priority - 1;
-                    cam1.m_Lens.OrthographicSize -= sizeToIncrease * Time.deltaTime;
+                    if (cam1.m_Lens.OrthographicSize < maxOrthoSize)
+                    {
+                        playerInput.enabled = false;
+                        cam1.m_Lens.OrthographicSize += sizeToIncrease * Time.deltaTime;
+                    }
+                    else
+                    {
+                        cam2.Priority = cam1.Priority + 1;
+                        playerInput.enabled = true;
+                        cameraState = false;
+                        camPanTrigger = false;
+                    }
 
                 }
                 else
                 {
-                    playerInput.enabled = true;
-                    cameraState = true;
-                    camPanTrigger = false;
-                }
+                    if (cam1.m_Lens.OrthographicSize > currentSize)
+                    {
+                        playerInput.enabled = false;
+                        cam2.Priority = cam1.Priority - 1;
+                        cam1.m_Lens.OrthographicSize -= sizeToIncrease * Time.deltaTime;
 
+                    }
+                    else
+                    {
+                        playerInput.enabled = true;
+                        cameraState = true;
+                        camPanTrigger = false;
+                    }
+
+                }
             }
         }
+        
         
     }
     private void OnTriggerEnter2D(Collider2D collision)
