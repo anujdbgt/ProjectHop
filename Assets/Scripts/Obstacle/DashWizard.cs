@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class DashWizard : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class DashWizard : MonoBehaviour
     Rigidbody2D rb;
     int direction = -1;
     bool movementStarted = false;
+
+    AudioSource dashSound;
     void Start()
     {
+        dashSound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
 
@@ -30,6 +34,7 @@ public class DashWizard : MonoBehaviour
         if(PlayerCheck() && !movementStarted)
         {
             ani.SetTrigger("Dash");
+            dashSound.Play();
             rb.velocity = speed * Vector2.right * direction;
             movementStarted = true;
         }

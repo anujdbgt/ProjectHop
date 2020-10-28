@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEditor;
 using MyBox;
+using UnityEngine.Audio;
 public class JumpingEnemy : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -10,6 +11,8 @@ public class JumpingEnemy : MonoBehaviour
 
     [Header("Values Should Be Default If XY Jump Is False")]
     public bool xYJump;
+
+    AudioSource jumpSound;
     public enum JumpDirection
     {
         None,
@@ -27,6 +30,7 @@ public class JumpingEnemy : MonoBehaviour
     Rigidbody2D rb;
     void Awake()
     {
+        jumpSound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         xForcePri = xForce;
@@ -67,11 +71,13 @@ public class JumpingEnemy : MonoBehaviour
         float horForce = xForcePri * directionChange;
         xForcePri = horForce;
         animator.SetTrigger("Jumping");
+        jumpSound.Play();
         rb.AddForce(new Vector2(horForce, yForce), ForceMode2D.Impulse);
     }
     void JumpInOneDiection()
     {
         animator.SetTrigger("Jumping");
+        jumpSound.Play();
         rb.AddForce(new Vector2(xForce * directionChange, yForce), ForceMode2D.Impulse);
     }
 }

@@ -367,7 +367,7 @@ PrefabInstance:
     - target: {fileID: 8489688773208236680, guid: d79304222c1fcf548a680efaf817493e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.9263363
+      value: -2.0442457
       objectReference: {fileID: 0}
     - target: {fileID: 8489688773208236680, guid: d79304222c1fcf548a680efaf817493e,
         type: 3}
@@ -422,7 +422,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &377781224
 GameObject:
@@ -72780,49 +72780,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32dad4eebe94f864894768be91706ab4, type: 3}
---- !u!1 &1323636543
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1323636545}
-  - component: {fileID: 1323636544}
-  m_Layer: 0
-  m_Name: SoundManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1323636544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323636543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2bd037fe4b28944fbf429b4e9919d26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1323636545
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323636543}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 610.7911, y: 491.5834, z: -352.82965}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1329242694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1991310862175204966, guid: 1d94ef351cefcf74388c4bf6aa1dfecd,

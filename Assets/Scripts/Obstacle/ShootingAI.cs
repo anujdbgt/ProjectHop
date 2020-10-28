@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ShootingAI : MonoBehaviour
 {
@@ -17,9 +18,11 @@ public class ShootingAI : MonoBehaviour
     SpriteRenderer bulletSprite;
     bool canShoot = true;
 
+    AudioSource shootingAudio;
+
     void Start()
     {
-
+        shootingAudio = GetComponent<AudioSource>();
         bulletPosition = bullet.transform.localPosition;
         rb = bullet.GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
@@ -74,6 +77,7 @@ public class ShootingAI : MonoBehaviour
         ani.SetTrigger("Shooting");
         yield return new WaitForSeconds(animSync);
         ActivateBullet();
+        shootingAudio.Play();
         Addvelocity();
     }
 
